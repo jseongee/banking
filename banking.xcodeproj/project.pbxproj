@@ -14,7 +14,7 @@
 		A16FDBA62E12D5040042AC83 /* Exceptions for "banking" folder in "banking" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Info.plist,
+				App/Info.plist,
 			);
 			target = A16FDB932E12D5010042AC83 /* banking */;
 		};
@@ -147,7 +147,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YQW8MK78PZ;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = banking/Info.plist;
+				INFOPLIST_FILE = banking/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -176,7 +176,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YQW8MK78PZ;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = banking/Info.plist;
+				INFOPLIST_FILE = banking/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
