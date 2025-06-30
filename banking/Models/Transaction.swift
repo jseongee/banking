@@ -16,4 +16,21 @@ struct Transaction {
         self.id = UUID()
         self.isExpense = isExpense
     }
+
+	var formattedAmount: String {
+        let prefix = isExpense ? "-" : "+"
+        return "\(prefix)$\(String(format: "%.0f", amount))"
+    }
+
+    var formattedDate: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM.dd.yyyy"
+        return formatter.string(from: date)
+    }
+
+    var timeString: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "h:mm a"
+        return formatter.string(from: date)
+    }
 }
