@@ -9,19 +9,19 @@ struct SampleDataGenerator {
         return [
             CreditCard(
                 availableBalance: 8300.90,
-                cardName: "Adom Shafi",
+                cardName: "Adom Shafi 1",
                 cardNumber: "1234567890129658",
                 cardType: .visa
             ),
             CreditCard(
                 availableBalance: 12500.45,
-                cardName: "Adom Shafi",
+                cardName: "Adom Shafi 2",
                 cardNumber: "1234567890122847",
                 cardType: .masterCard
             ),
             CreditCard(
                 availableBalance: 5670.20,
-                cardName: "Adom Shafi",
+                cardName: "Adom Shafi 3",
                 cardNumber: "1234567890121934",
                 cardType: .payPal
             )

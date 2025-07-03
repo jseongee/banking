@@ -28,7 +28,7 @@ struct CreditCard {
         var backgroundColor: String {
             switch self {
             case .visa:
-                return "#4A67FF" // 파란색
+                return "#2162FF" // 파란색
             case .masterCard:
                 return "#FF6B6B" // 빨간색
             case .payPal:
