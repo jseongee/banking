@@ -1,6 +1,6 @@
 import Foundation
 
-struct CreditCard {
+struct CreditCard: Hashable {
     let availableBalance: Double
     let cardName: String
     let cardNumber: String

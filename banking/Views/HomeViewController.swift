@@ -1,6 +1,10 @@
 import UIKit
 
 class HomeViewController: UIViewController {
+    enum Section: CaseIterable {
+        case main
+    }
+
     // MARK: - Outlets
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -19,6 +23,7 @@ class HomeViewController: UIViewController {
     private var creditCards: [CreditCard] = []
     private var allExpenseAmount: Double = 0
     private var monthlyExpenseAmount: Double = 0
+    private var cardDataSource: UICollectionViewDiffableDataSource<Section, CreditCard>!
 
     // MARK: - Lifecylces
     override func viewDidLoad() {
@@ -30,6 +35,8 @@ class HomeViewController: UIViewController {
 
         setupProfileUI()
         setupExpenseUI()
+
+        setupCardDataSource()
 
         updateProfileData()
         updateCardData()
@@ -84,6 +91,16 @@ class HomeViewController: UIViewController {
         view.layer.borderColor = borderColor
     }
 
+    // MARK: - Setup Data Sources
+    private func setupCardDataSource() {
+        cardDataSource = UICollectionViewDiffableDataSource<Section, CreditCard>(
+            collectionView: cardCollectionView
+        ) { collectionView, indexPath, card in
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CreditCardCell", for: indexPath) as! CreditCardCollectionViewCell
+            cell.configure(with: card)
+            return cell
+        }
+    }
 
     // MARK: - Update Datas
     private func updateProfileData() {
@@ -97,7 +114,13 @@ class HomeViewController: UIViewController {
     }
 
     private func updateCardData() {
-        cardCollectionView.reloadData()
+        var snapshot = NSDiffableDataSourceSnapshot<Section, CreditCard>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(creditCards)
+
+        cardDataSource.apply(snapshot, animatingDifferences: true) { [weak self] in
+            self?.view.layoutIfNeeded()
+        }
     }
 
     private func updateExpenseData() {
@@ -136,17 +159,7 @@ class HomeViewController: UIViewController {
     }
 }
 
-extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return creditCards.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CreditCardCell", for: indexPath) as! CreditCardCollectionViewCell
-        cell.configure(with: creditCards[indexPath.item])
-        return cell
-    }
-
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.frame.width - 20
         return CGSize(width: width, height: 250)
