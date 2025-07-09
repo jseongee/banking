@@ -50,8 +50,14 @@ class HomeViewController: UIViewController {
         updateTransactionData()
     }
 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 
     // MARK: - Load Datas
@@ -213,13 +219,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDelegate
             return CGSize(width: width, height: 100)
         } else {
             return CGSize.zero
-        }
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if collectionView == cardCollectionView {
-            // TODO: Activity 화면 열기
-            print("Credit Card selected: \(creditCards[indexPath.item].cardName)")
         }
     }
 }

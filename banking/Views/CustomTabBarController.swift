@@ -3,74 +3,86 @@ import UIKit
 class CustomTabBarController: UIViewController {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var tabBarContainerView: UIView!
-
     @IBOutlet weak var homeButton: UIButton!
     @IBOutlet weak var walletButton: UIButton!
     @IBOutlet weak var historyButton: UIButton!
     @IBOutlet weak var profileButton: UIButton!
 
-    private var viewControllers: [UIViewController] = []
-    private var currentViewController: UIViewController?
-    private var selectedIndex: Int = 0
+    private var currentSelectedIndex: Int = 0
+    private var tabButtons: [UIButton] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupTabBarContainerUI()
-        setupViewControllers()
-        selectTab(at: selectedIndex)
+        setupTabBar()
+        showViewController(at: 0)
     }
 
-    private func setupTabBarContainerUI() {
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         tabBarContainerView.layer.cornerRadius = 50
-        tabBarContainerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
 
-    private func setupViewControllers() {
+    private func setupTabBar() {
+        tabButtons = [homeButton, walletButton, historyButton, profileButton]
+        updateTabSelection(selectedIndex: 0)
+    }
+
+    private func updateTabSelection(selectedIndex: Int) {
+        currentSelectedIndex = selectedIndex
+
+        for (index, button) in tabButtons.enumerated() {
+            if index == selectedIndex {
+                button.tintColor = .white
+                button.backgroundColor = .clear
+            } else {
+                button.tintColor = .systemGray
+                button.backgroundColor = .clear
+            }
+        }
+    }
+
+    private func showViewController(at index: Int) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let homeVC = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
-        let walletVC = storyboard.instantiateViewController(withIdentifier: "WalletViewController")
-        let historyVC = storyboard.instantiateViewController(withIdentifier: "HistoryViewController")
-        let profileVC = storyboard.instantiateViewController(withIdentifier: "ProfileViewController")
-        viewControllers = [homeVC, walletVC, historyVC, profileVC]
+        let viewController: UIViewController
+
+        switch index {
+        case 0:
+            guard let homeVC = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else { return }
+            viewController = UINavigationController(rootViewController: homeVC)
+        case 1:
+            let walletVC = storyboard.instantiateViewController(withIdentifier: "WalletViewController")
+            viewController = UINavigationController(rootViewController: walletVC)
+        case 2:
+            let historyVC = storyboard.instantiateViewController(withIdentifier: "HistoryViewController")
+            viewController = UINavigationController(rootViewController: historyVC)
+        case 3:
+            let profileVC = storyboard.instantiateViewController(withIdentifier: "ProfileViewController")
+            viewController = UINavigationController(rootViewController: profileVC)
+        default:
+            return
+        }
+
+        // 기존 child view controller 제거
+        children.forEach { child in
+            child.willMove(toParent: nil)
+            child.view.removeFromSuperview()
+            child.removeFromParent()
+        }
+
+        // 새 view controller 추가
+        addChild(viewController)
+        containerView.addSubview(viewController.view)
+        viewController.view.frame = containerView.bounds
+        viewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        viewController.didMove(toParent: self)
     }
 
     @IBAction func tabButtonTapped(_ sender: UIButton) {
-        selectTab(at: sender.tag)
-    }
+        let selectedIndex = sender.tag
+        guard selectedIndex != currentSelectedIndex else { return }
 
-    private func selectTab(at index: Int) {
-        updateButtonSelection(selectedIndex: index)
-        switchViewController(to: index)
-        selectedIndex = index
-    }
-
-    private func updateButtonSelection(selectedIndex: Int) {
-        let buttons = [homeButton, walletButton, historyButton, profileButton]
-
-        buttons.forEach({
-            $0?.tintColor = $0?.tag == selectedIndex ? .white : .white.withAlphaComponent(0.6)
-        })
-    }
-
-    private func switchViewController(to index: Int) {
-        currentViewController?.willMove(toParent: nil)
-        currentViewController?.view.removeFromSuperview()
-        currentViewController?.removeFromParent()
-
-        let newVC = viewControllers[index]
-        addChild(newVC)
-        containerView.addSubview(newVC.view)
-
-        newVC.view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            newVC.view.topAnchor.constraint(equalTo: containerView.topAnchor),
-            newVC.view.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-            newVC.view.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            newVC.view.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
-        ])
-
-        newVC.didMove(toParent: self)
-        currentViewController = newVC
+        updateTabSelection(selectedIndex: selectedIndex)
+        showViewController(at: selectedIndex)
     }
 }

@@ -9,7 +9,6 @@ class TransactionCollectionViewCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-
         setupUI()
     }
 

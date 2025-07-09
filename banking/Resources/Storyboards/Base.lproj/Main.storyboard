@@ -266,6 +266,7 @@
                                                                     <outlet property="cardBackgroundView" destination="ven-gR-61L" id="O0D-WK-gYi"/>
                                                                     <outlet property="cardNameLabel" destination="8mi-mg-g3S" id="fGo-cv-dl9"/>
                                                                     <outlet property="cardNumberLabel" destination="pDJ-vX-9Kh" id="hFw-Od-Zke"/>
+                                                                    <segue destination="MCo-Qu-bms" kind="show" id="cNp-dT-krN"/>
                                                                 </connections>
                                                             </collectionViewCell>
                                                         </cells>
@@ -294,7 +295,7 @@
                                                                 <rect key="frame" x="151" y="10" width="20" height="20"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.up.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="pzl-iZ-v1S">
-                                                                        <rect key="frame" x="2.6666666666666856" y="5.6666666666666856" width="15" height="9.0000000000000036"/>
+                                                                        <rect key="frame" x="2.6666666666666856" y="5.6666666666666288" width="15" height="9.0000000000000036"/>
                                                                         <color key="tintColor" systemColor="labelColor"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="15" id="Kmz-BQ-kJo"/>
@@ -381,7 +382,7 @@
                                                                 <rect key="frame" x="151" y="10" width="20" height="20"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.up.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="wJ5-NS-0fJ">
-                                                                        <rect key="frame" x="2.3333333333333428" y="5.6666666666666856" width="15" height="9.0000000000000036"/>
+                                                                        <rect key="frame" x="2.3333333333333428" y="5.6666666666666288" width="15" height="9.0000000000000036"/>
                                                                         <color key="tintColor" systemColor="labelColor"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="15" id="h8P-Bx-Ncf"/>
@@ -655,6 +656,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="1Ue-PR-TFr" secondAttribute="bottom" id="UBE-I7-76l"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="clL-AR-EED"/>
                     <connections>
                         <outlet property="allExpenesCardView" destination="zbg-YO-2w0" id="oJc-At-9mf"/>
                         <outlet property="allExpenseAmountLabel" destination="Rrv-g0-Lzh" id="h8x-lr-E9Z"/>
@@ -673,7 +675,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2240.4580152671756" y="743.66197183098598"/>
+            <point key="canvasLocation" x="-1731" y="746"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="aMw-Xp-uGK">
@@ -700,7 +702,30 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZlT-j6-FU8" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1244" y="744"/>
+            <point key="canvasLocation" x="-735" y="746"/>
+        </scene>
+        <!--Activity-->
+        <scene sceneID="t98-5s-cNy">
+            <objects>
+                <viewController id="MCo-Qu-bms" customClass="ActivityViewController" customModule="banking" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rLD-y4-2zx">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Cws-O0-aNm"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Activity" largeTitleDisplayMode="never" id="uE8-y9-NsL">
+                        <barButtonItem key="leftBarButtonItem" image="arrow.left" catalog="system" id="c7e-qH-KIc">
+                            <color key="tintColor" systemColor="labelColor"/>
+                            <connections>
+                                <action selector="closeVC:" destination="MCo-Qu-bms" id="KXX-le-SnG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zw7-hr-PKx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1732" y="1502"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="5wF-0F-fH9">
@@ -727,7 +752,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9us-YW-fQ0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-205" y="744"/>
+            <point key="canvasLocation" x="305" y="746"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="3Rz-vG-Sav">
@@ -754,10 +779,29 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uff-l3-461" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="804" y="744"/>
+            <point key="canvasLocation" x="1314" y="746"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="RWb-rC-Gac">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CdB-dS-3g8" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3a0-on-eAa">
+                        <rect key="frame" x="0.0" y="118" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="lHg-kM-wo0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rJC-B5-xRI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2752" y="746"/>
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.left" catalog="system" width="128" height="95"/>
         <image name="arrow.up.right" catalog="system" width="128" height="112"/>
         <image name="bell" catalog="system" width="125" height="128"/>
         <image name="clock" catalog="system" width="128" height="123"/>
