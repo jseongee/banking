@@ -715,13 +715,19 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Activity" largeTitleDisplayMode="never" id="uE8-y9-NsL">
-                        <barButtonItem key="leftBarButtonItem" image="arrow.left" catalog="system" id="c7e-qH-KIc">
+                        <barButtonItem key="leftBarButtonItem" image="arrow.left" catalog="system" style="plain" id="c7e-qH-KIc">
                             <color key="tintColor" systemColor="labelColor"/>
                             <connections>
-                                <action selector="closeVC:" destination="MCo-Qu-bms" id="KXX-le-SnG"/>
+                                <action selector="backButtonTapped:" destination="MCo-Qu-bms" id="KXX-le-SnG"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="ellipsis" catalog="system" style="plain" id="zdX-V5-WAI">
+                            <color key="tintColor" systemColor="labelColor"/>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="moreButton" destination="zdX-V5-WAI" id="lUg-z6-ZfU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zw7-hr-PKx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -806,6 +812,7 @@
         <image name="bell" catalog="system" width="125" height="128"/>
         <image name="clock" catalog="system" width="128" height="123"/>
         <image name="creditcard" catalog="system" width="128" height="88"/>
+        <image name="ellipsis" catalog="system" width="128" height="37"/>
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="person" catalog="system" width="128" height="121"/>
         <image name="person.circle.fill" catalog="system" width="128" height="123"/>
