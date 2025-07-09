@@ -1,6 +1,6 @@
 import Foundation
 
-struct Transaction {
+struct Transaction: Hashable {
     let amount: Double
     let counterparty: String
     let date: Date

@@ -32,7 +32,7 @@ struct SampleDataGenerator {
         let sampleData = [
             ("Netflix", 120.0, "tv.circle.fill", true),
             ("Tony Stark", 950.0, "person.circle.fill", false),
-            ("Spotify", 15.99, "music.note.circle.fill", true),
+            ("Spotify", 15.99, "music.note.list", true),
             ("Apple Store", 299.99, "applelogo", true),
             ("Uber", 25.50, "car.circle.fill", true),
             ("Amazon", 89.95, "shippingbox.circle.fill", true),

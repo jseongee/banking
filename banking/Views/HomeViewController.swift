@@ -17,13 +17,18 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var monthlyExpenseAmountLabel: UILabel!
     @IBOutlet weak var monthlyExpenseArrowIconContainerView: UIView!
     @IBOutlet weak var monthlyExpenseWalletIconContainerView: UIView!
-    
+    @IBOutlet weak var transactionCollectionView: UICollectionView!
+    @IBOutlet weak var transactionCollectionViewHeightConstraint: NSLayoutConstraint!
+
     // MARK: - Properties
     private var user: User?
     private var creditCards: [CreditCard] = []
     private var allExpenseAmount: Double = 0
     private var monthlyExpenseAmount: Double = 0
+    private var transactions: [Transaction] = []
     private var cardDataSource: UICollectionViewDiffableDataSource<Section, CreditCard>!
+    private var transactionDataSource: UICollectionViewDiffableDataSource<Section, Transaction>!
+
 
     // MARK: - Lifecylces
     override func viewDidLoad() {
@@ -32,15 +37,21 @@ class HomeViewController: UIViewController {
         loadUserData()
         loadCreditCardData()
         loadExpenseData()
+        loadTransactionData()
 
         setupProfileUI()
         setupExpenseUI()
-
         setupCardDataSource()
+        setupTransactionDataSource()
 
         updateProfileData()
         updateCardData()
         updateExpenseData()
+        updateTransactionData()
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
     }
 
     // MARK: - Load Datas
@@ -53,7 +64,7 @@ class HomeViewController: UIViewController {
     }
 
     private func loadExpenseData() {
-        let transactions = SampleDataGenerator.createSampleTransactions()
+        loadTransactionData()
 
         let allExpenses = transactions.filter { $0.isExpense }.reduce(0) { $0 + $1.amount }
         let monthlyExpenses = transactions.filter {
@@ -62,6 +73,10 @@ class HomeViewController: UIViewController {
 
         allExpenseAmount = allExpenses
         monthlyExpenseAmount = monthlyExpenses
+    }
+
+    private func loadTransactionData() {
+        transactions = SampleDataGenerator.createSampleTransactions()
     }
 
     // MARK: - Setup UIs
@@ -93,11 +108,25 @@ class HomeViewController: UIViewController {
 
     // MARK: - Setup Data Sources
     private func setupCardDataSource() {
-        cardDataSource = UICollectionViewDiffableDataSource<Section, CreditCard>(
-            collectionView: cardCollectionView
-        ) { collectionView, indexPath, card in
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CreditCardCell", for: indexPath) as! CreditCardCollectionViewCell
+        cardDataSource = UICollectionViewDiffableDataSource<Section, CreditCard>(collectionView: cardCollectionView) {
+            collectionView, indexPath, card in
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: "CreditCardCell",
+                for: indexPath
+            ) as! CreditCardCollectionViewCell
             cell.configure(with: card)
+            return cell
+        }
+    }
+
+    private func setupTransactionDataSource() {
+        transactionDataSource = UICollectionViewDiffableDataSource<Section, Transaction>(collectionView: transactionCollectionView) {
+            collectionView, indexPath, transaction in
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: "TransactionCell",
+                for: indexPath
+            ) as! TransactionCollectionViewCell
+            cell.configure(with: transaction)
             return cell
         }
     }
@@ -126,6 +155,17 @@ class HomeViewController: UIViewController {
     private func updateExpenseData() {
         allExpenseAmountLabel.attributedText = formatAmount(allExpenseAmount)
         monthlyExpenseAmountLabel.attributedText = formatAmount(monthlyExpenseAmount)
+    }
+
+    private func updateTransactionData() {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Transaction>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(transactions)
+        transactionDataSource.apply(snapshot)
+
+        let itemHeight: CGFloat = 100
+        let totalHeight = CGFloat(transactions.count) * itemHeight
+        transactionCollectionViewHeightConstraint.constant = totalHeight
     }
 
     // MARK: - Utils
@@ -157,16 +197,29 @@ class HomeViewController: UIViewController {
 
         return attributedString
     }
+
+    @IBAction func seeAllButtonTapped(_ sender: Any) {
+        print("See all Button Tapped")
+    }
 }
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.frame.width - 20
-        return CGSize(width: width, height: 250)
+        if collectionView == cardCollectionView {
+            let width = collectionView.frame.width - 20
+            return CGSize(width: width, height: 250)
+        } else if collectionView == transactionCollectionView {
+            let width = collectionView.frame.width
+            return CGSize(width: width, height: 100)
+        } else {
+            return CGSize.zero
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // TODO: Activity 화면 열기
-        print("카드 선택됨: \(creditCards[indexPath.item].cardName)")
+        if collectionView == cardCollectionView {
+            // TODO: Activity 화면 열기
+            print("Credit Card selected: \(creditCards[indexPath.item].cardName)")
+        }
     }
 }
