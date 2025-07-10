@@ -770,13 +770,134 @@
                                     <constraint firstAttribute="trailing" secondItem="AZI-Tb-90N" secondAttribute="trailing" id="S7X-yu-oyF"/>
                                 </constraints>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="GYO-ax-X7W">
+                                <rect key="frame" x="20" y="151" width="200.33333333333334" height="92.333333333333314"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This week" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w6y-sO-hnJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="56.666666666666664" height="14.333333333333334"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$45,655.40" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bsn-Ar-yCb">
+                                        <rect key="frame" x="0.0" y="24.333333333333343" width="200.33333333333334" height="43"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="36"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="hb5-0Q-3zY">
+                                        <rect key="frame" x="0.0" y="77.333333333333343" width="136" height="15"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.up.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="bTV-GQ-4v5">
+                                                <rect key="frame" x="0.0" y="2.9999999999999982" width="16.333333333333332" height="9.0000000000000018"/>
+                                                <color key="tintColor" systemColor="systemGreenColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="15" id="isR-fh-ScA"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$569.82.52 (2.56%)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0QU-qk-rcV">
+                                                <rect key="frame" x="21.333333333333336" y="0.33333333333331439" width="114.66666666666666" height="14.333333333333334"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                <color key="textColor" systemColor="systemGreenColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="O8N-wH-m5H">
+                                <rect key="frame" x="20" y="273.33333333333331" width="270" height="60"/>
+                                <subviews>
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ITd-Cu-N19">
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="creditcard" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="2yw-Kz-3Ep">
+                                                <rect key="frame" x="15" y="17" width="30" height="26"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="MCF-14-IWk"/>
+                                                    <constraint firstAttribute="width" constant="30" id="TQQ-aC-qbC"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                        <constraints>
+                                            <constraint firstItem="2yw-Kz-3Ep" firstAttribute="centerY" secondItem="ITd-Cu-N19" secondAttribute="centerY" id="DV3-6H-qaa"/>
+                                            <constraint firstItem="2yw-Kz-3Ep" firstAttribute="centerX" secondItem="ITd-Cu-N19" secondAttribute="centerXWithinMargins" id="daH-Sl-SuB"/>
+                                            <constraint firstAttribute="height" constant="60" id="itz-x1-GnO"/>
+                                            <constraint firstAttribute="width" constant="60" id="uEW-QG-mb9"/>
+                                        </constraints>
+                                    </view>
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dsd-ft-fFg">
+                                        <rect key="frame" x="70" y="0.0" width="60" height="60"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="creditcard" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ZPP-b5-TBy">
+                                                <rect key="frame" x="15" y="17" width="30" height="26"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="2aQ-ps-yhg"/>
+                                                    <constraint firstAttribute="height" constant="30" id="tTd-SM-LBu"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                        <constraints>
+                                            <constraint firstItem="ZPP-b5-TBy" firstAttribute="centerY" secondItem="dsd-ft-fFg" secondAttribute="centerY" id="AZ5-26-bmD"/>
+                                            <constraint firstAttribute="height" constant="60" id="bbd-Ss-NPZ"/>
+                                            <constraint firstItem="ZPP-b5-TBy" firstAttribute="centerX" secondItem="dsd-ft-fFg" secondAttribute="centerXWithinMargins" id="iZ2-8Z-5mK"/>
+                                            <constraint firstAttribute="width" constant="60" id="rRU-Qf-1iB"/>
+                                        </constraints>
+                                    </view>
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hvg-9u-DYp">
+                                        <rect key="frame" x="140" y="0.0" width="60" height="60"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="creditcard" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="jvY-fo-5EH">
+                                                <rect key="frame" x="15" y="17" width="30" height="26"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="C0b-yB-MDY"/>
+                                                    <constraint firstAttribute="height" constant="30" id="apV-22-hnM"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="6hL-1Z-gwZ"/>
+                                            <constraint firstItem="jvY-fo-5EH" firstAttribute="centerY" secondItem="Hvg-9u-DYp" secondAttribute="centerY" id="BaM-iq-69d"/>
+                                            <constraint firstAttribute="height" constant="60" id="qZf-tb-85f"/>
+                                            <constraint firstItem="jvY-fo-5EH" firstAttribute="centerX" secondItem="Hvg-9u-DYp" secondAttribute="centerXWithinMargins" id="uPS-45-e1d"/>
+                                        </constraints>
+                                    </view>
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A9U-pf-fID">
+                                        <rect key="frame" x="210" y="0.0" width="60" height="60"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="qQJ-6B-MKn">
+                                                <rect key="frame" x="20" y="22.333333333333329" width="20" height="15.666666666666671"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="20" id="Ceq-ME-CEc"/>
+                                                    <constraint firstAttribute="height" constant="20" id="MQS-ji-l8c"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="9Mj-IK-cB2"/>
+                                            <constraint firstAttribute="width" constant="60" id="Eix-a4-08J"/>
+                                            <constraint firstItem="qQJ-6B-MKn" firstAttribute="centerY" secondItem="A9U-pf-fID" secondAttribute="centerY" id="k1M-EG-V5I"/>
+                                            <constraint firstItem="qQJ-6B-MKn" firstAttribute="centerX" secondItem="A9U-pf-fID" secondAttribute="centerXWithinMargins" id="oPb-TJ-OXJ"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Cws-O0-aNm"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="O8N-wH-m5H" firstAttribute="leading" secondItem="Cws-O0-aNm" secondAttribute="leading" constant="20" id="EJF-HP-jUt"/>
                             <constraint firstItem="Cws-O0-aNm" firstAttribute="trailing" secondItem="gxt-1f-GBe" secondAttribute="trailing" constant="30" id="JcU-oE-yox"/>
+                            <constraint firstItem="GYO-ax-X7W" firstAttribute="leading" secondItem="Cws-O0-aNm" secondAttribute="leading" constant="20" id="Lhh-Ng-Obv"/>
+                            <constraint firstItem="O8N-wH-m5H" firstAttribute="top" secondItem="GYO-ax-X7W" secondAttribute="bottom" constant="30" id="Zcy-4V-Beg"/>
                             <constraint firstItem="gxt-1f-GBe" firstAttribute="top" secondItem="Cws-O0-aNm" secondAttribute="top" constant="30" id="hSf-DH-1rx"/>
                             <constraint firstItem="gxt-1f-GBe" firstAttribute="leading" secondItem="Cws-O0-aNm" secondAttribute="leading" constant="30" id="w9c-ou-lQW"/>
+                            <constraint firstItem="GYO-ax-X7W" firstAttribute="top" secondItem="gxt-1f-GBe" secondAttribute="bottom" constant="30" id="yPa-sE-9cV"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Activity" largeTitleDisplayMode="never" id="uE8-y9-NsL">
@@ -791,6 +912,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cardButtonStackView" destination="O8N-wH-m5H" id="IOE-DV-I98"/>
                         <outlet property="categoryStackView" destination="AZI-Tb-90N" id="34Q-Hg-TSv"/>
                         <outlet property="indicatorLeadingConstraint" destination="JpW-tV-AYE" id="NkA-ZE-FYa"/>
                         <outlet property="moreButton" destination="zdX-V5-WAI" id="lUg-z6-ZfU"/>
@@ -798,7 +920,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zw7-hr-PKx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1738" y="1483"/>
+            <point key="canvasLocation" x="-1738.1679389312976" y="1482.3943661971832"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="5wF-0F-fH9">
@@ -865,6 +987,7 @@
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="person" catalog="system" width="128" height="121"/>
         <image name="person.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="wallet.bifold" catalog="system" width="128" height="103"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -883,6 +1006,9 @@
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemIndigoColor">
             <color red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

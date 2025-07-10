@@ -5,6 +5,7 @@ class ActivityViewController: UIViewController {
     @IBOutlet weak var moreButton: UIBarButtonItem!
     @IBOutlet weak var categoryStackView: UIStackView!
     @IBOutlet weak var indicatorLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var cardButtonStackView: UIStackView!
     
     // MARK: - Properties
     private var selectedCategoryIndex = 0
@@ -16,6 +17,7 @@ class ActivityViewController: UIViewController {
 
         setupMoreMenu()
         setupCategoryButtons()
+        setupCardButtons()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -58,6 +60,12 @@ class ActivityViewController: UIViewController {
             if let subview = $0 as? UIButton {
                 categoryButtons.append(subview)
             }
+        }
+    }
+
+    private func setupCardButtons() {
+        for cardButton in cardButtonStackView.arrangedSubviews {
+            cardButton.layer.cornerRadius = cardButton.frame.width / 2
         }
     }
 
