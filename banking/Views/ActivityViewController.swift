@@ -3,15 +3,19 @@ import UIKit
 class ActivityViewController: UIViewController {
 	// MARK: - Outlets
     @IBOutlet weak var moreButton: UIBarButtonItem!
-
+    @IBOutlet weak var categoryStackView: UIStackView!
+    @IBOutlet weak var indicatorLeadingConstraint: NSLayoutConstraint!
+    
     // MARK: - Properties
-    private let categories = ["Checking", "Savings", "Crypto"]
-        private var selectedCategoryIndex = 0
+    private var selectedCategoryIndex = 0
+    private var categoryButtons: [UIButton] = []
 
     // MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
+
         setupMoreMenu()
+        setupCategoryButtons()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -49,6 +53,14 @@ class ActivityViewController: UIViewController {
         moreButton.menu = menu
     }
 
+    private func setupCategoryButtons() {
+        categoryStackView.arrangedSubviews.forEach {
+            if let subview = $0 as? UIButton {
+                categoryButtons.append(subview)
+            }
+        }
+    }
+
     private func findCustomTabBarController() -> CustomTabBarController? {
         var parentVC = self.parent
         while parentVC != nil {
@@ -63,5 +75,37 @@ class ActivityViewController: UIViewController {
     // MARK: - Actions
     @IBAction func backButtonTapped(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
+    }
+
+    @IBAction func categoryButtonTapped(_ sender: UIButton) {
+        let newIndex = sender.tag
+        guard newIndex != selectedCategoryIndex else { return }
+
+        selectedCategoryIndex = newIndex
+        updateButtonStates()
+        updateIndicatorPosition()
+    }
+
+    private func updateButtonStates() {
+        for (index, button) in categoryButtons.enumerated() {
+            let isSelected = index == selectedCategoryIndex
+
+            var config = button.configuration
+            config?.baseForegroundColor = isSelected ? .label : .systemGray
+
+            button.configuration = config
+        }
+    }
+
+    private func updateIndicatorPosition() {
+        guard !categoryButtons.isEmpty else { return }
+
+        let selectedButton = categoryButtons[selectedCategoryIndex]
+        let newLeadingConstant = selectedButton.frame.origin.x
+
+        UIView.animate(withDuration: 0.3) {
+            self.indicatorLeadingConstraint.constant = newLeadingConstant
+            self.view.layoutIfNeeded()
+        }
     }
 }

@@ -118,7 +118,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NtO-oI-MTt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-718.32061068702285" y="17.605633802816904"/>
+            <point key="canvasLocation" x="-213" y="26"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -266,7 +266,7 @@
                                                                     <outlet property="cardBackgroundView" destination="ven-gR-61L" id="O0D-WK-gYi"/>
                                                                     <outlet property="cardNameLabel" destination="8mi-mg-g3S" id="fGo-cv-dl9"/>
                                                                     <outlet property="cardNumberLabel" destination="pDJ-vX-9Kh" id="hFw-Od-Zke"/>
-                                                                    <segue destination="MCo-Qu-bms" kind="show" id="cNp-dT-krN"/>
+                                                                    <segue destination="MCo-Qu-bms" kind="show" id="mZT-TW-DCk"/>
                                                                 </connections>
                                                             </collectionViewCell>
                                                         </cells>
@@ -295,7 +295,7 @@
                                                                 <rect key="frame" x="151" y="10" width="20" height="20"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.up.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="pzl-iZ-v1S">
-                                                                        <rect key="frame" x="2.6666666666666856" y="5.6666666666666288" width="15" height="9.0000000000000036"/>
+                                                                        <rect key="frame" x="2.6666666666666856" y="5.6666666666666856" width="15" height="9.0000000000000036"/>
                                                                         <color key="tintColor" systemColor="labelColor"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="15" id="Kmz-BQ-kJo"/>
@@ -382,7 +382,7 @@
                                                                 <rect key="frame" x="151" y="10" width="20" height="20"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.up.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="wJ5-NS-0fJ">
-                                                                        <rect key="frame" x="2.3333333333333428" y="5.6666666666666288" width="15" height="9.0000000000000036"/>
+                                                                        <rect key="frame" x="2.3333333333333428" y="5.6666666666666856" width="15" height="9.0000000000000036"/>
                                                                         <color key="tintColor" systemColor="labelColor"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="15" id="h8P-Bx-Ncf"/>
@@ -675,7 +675,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1731" y="746"/>
+            <point key="canvasLocation" x="-1738" y="747"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="aMw-Xp-uGK">
@@ -702,36 +702,103 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZlT-j6-FU8" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-735" y="746"/>
+            <point key="canvasLocation" x="-741" y="747"/>
         </scene>
         <!--Activity-->
         <scene sceneID="t98-5s-cNy">
             <objects>
                 <viewController id="MCo-Qu-bms" customClass="ActivityViewController" customModule="banking" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rLD-y4-2zx">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="gxt-1f-GBe">
+                                <rect key="frame" x="30" y="89" width="333" height="32"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="AZI-Tb-90N">
+                                        <rect key="frame" x="0.0" y="0.0" width="333" height="24"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PNR-7W-h5w">
+                                                <rect key="frame" x="0.0" y="0.0" width="83" height="24"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Checking">
+                                                    <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
+                                                    <directionalEdgeInsets key="contentInsets" top="0.0" leading="0.0" bottom="0.0" trailing="0.0"/>
+                                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="categoryButtonTapped:" destination="MCo-Qu-bms" eventType="touchUpInside" id="QGx-0p-OL4"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M49-Ec-00A">
+                                                <rect key="frame" x="143.66666666666666" y="0.0" width="69" height="24"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Savings">
+                                                    <fontDescription key="titleFontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
+                                                    <directionalEdgeInsets key="contentInsets" top="0.0" leading="0.0" bottom="0.0" trailing="0.0"/>
+                                                    <color key="baseForegroundColor" systemColor="systemGrayColor"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="categoryButtonTapped:" destination="MCo-Qu-bms" eventType="touchUpInside" id="1Vt-ma-kfe"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BCV-iA-vIb">
+                                                <rect key="frame" x="273" y="0.0" width="60" height="24"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Crypto">
+                                                    <fontDescription key="titleFontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
+                                                    <directionalEdgeInsets key="contentInsets" top="0.0" leading="0.0" bottom="0.0" trailing="0.0"/>
+                                                    <color key="baseForegroundColor" systemColor="systemGrayColor"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="categoryButtonTapped:" destination="MCo-Qu-bms" eventType="touchUpInside" id="6IP-12-2J5"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z28-0y-1hc">
+                                        <rect key="frame" x="0.0" y="29" width="20" height="3"/>
+                                        <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="V94-oQ-0ce"/>
+                                            <constraint firstAttribute="height" constant="3" id="eDb-S9-khl"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="z28-0y-1hc" firstAttribute="leading" secondItem="gxt-1f-GBe" secondAttribute="leading" id="JpW-tV-AYE"/>
+                                    <constraint firstAttribute="trailing" secondItem="AZI-Tb-90N" secondAttribute="trailing" id="S7X-yu-oyF"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Cws-O0-aNm"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Cws-O0-aNm" firstAttribute="trailing" secondItem="gxt-1f-GBe" secondAttribute="trailing" constant="30" id="JcU-oE-yox"/>
+                            <constraint firstItem="gxt-1f-GBe" firstAttribute="top" secondItem="Cws-O0-aNm" secondAttribute="top" constant="30" id="hSf-DH-1rx"/>
+                            <constraint firstItem="gxt-1f-GBe" firstAttribute="leading" secondItem="Cws-O0-aNm" secondAttribute="leading" constant="30" id="w9c-ou-lQW"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Activity" largeTitleDisplayMode="never" id="uE8-y9-NsL">
-                        <barButtonItem key="leftBarButtonItem" image="arrow.left" catalog="system" style="plain" id="c7e-qH-KIc">
+                        <barButtonItem key="leftBarButtonItem" image="arrow.left" catalog="system" style="done" id="c7e-qH-KIc">
                             <color key="tintColor" systemColor="labelColor"/>
                             <connections>
                                 <action selector="backButtonTapped:" destination="MCo-Qu-bms" id="KXX-le-SnG"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="ellipsis" catalog="system" style="plain" id="zdX-V5-WAI">
+                        <barButtonItem key="rightBarButtonItem" image="ellipsis" catalog="system" style="done" id="zdX-V5-WAI">
                             <color key="tintColor" systemColor="labelColor"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="categoryStackView" destination="AZI-Tb-90N" id="34Q-Hg-TSv"/>
+                        <outlet property="indicatorLeadingConstraint" destination="JpW-tV-AYE" id="NkA-ZE-FYa"/>
                         <outlet property="moreButton" destination="zdX-V5-WAI" id="lUg-z6-ZfU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zw7-hr-PKx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1732" y="1502"/>
+            <point key="canvasLocation" x="-1738" y="1483"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="5wF-0F-fH9">
@@ -758,7 +825,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9us-YW-fQ0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="305" y="746"/>
+            <point key="canvasLocation" x="298" y="747"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="3Rz-vG-Sav">
@@ -785,25 +852,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uff-l3-461" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1314" y="746"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="RWb-rC-Gac">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CdB-dS-3g8" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3a0-on-eAa">
-                        <rect key="frame" x="0.0" y="118" width="393" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="lHg-kM-wo0"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rJC-B5-xRI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2752" y="746"/>
+            <point key="canvasLocation" x="1308" y="747"/>
         </scene>
     </scenes>
     <resources>
