@@ -186,7 +186,7 @@ class HomeViewController: UIViewController {
         let attributedString = NSMutableAttributedString()
         let majorAttributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.systemFont(ofSize: 30),
-            .foregroundColor: UIColor.black
+            .foregroundColor: UIColor.label
         ]
         let minorAttributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.systemFont(ofSize: 20),
