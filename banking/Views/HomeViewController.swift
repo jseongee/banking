@@ -204,7 +204,7 @@ class HomeViewController: UIViewController {
         return attributedString
     }
 
-    @IBAction func seeAllButtonTapped(_ sender: Any) {
+    @IBAction func seeAllButtonTapped(_ sender: UIButton) {
         print("See all Button Tapped")
     }
 }

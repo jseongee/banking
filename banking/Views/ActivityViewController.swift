@@ -1,21 +1,33 @@
 import UIKit
 
 class ActivityViewController: UIViewController {
+    enum Section: CaseIterable {
+        case main
+    }
+
 	// MARK: - Outlets
     @IBOutlet weak var moreButton: UIBarButtonItem!
     @IBOutlet weak var categoryStackView: UIStackView!
     @IBOutlet weak var indicatorLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var transactionCollectionView: UICollectionView!
+    @IBOutlet weak var transactionCollectionViewHeightConstraint: NSLayoutConstraint!
     
     // MARK: - Properties
     private var selectedCategoryIndex = 0
     private var categoryButtons: [UIButton] = []
+    private var transactions: [Transaction] = []
+    private var transactionDataSource: UICollectionViewDiffableDataSource<Section, Transaction>!
 
     // MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        loadTransactionData()
+
         setupMoreMenu()
         setupCategoryButtons()
+        setupTransactionDataSource()
+        updateTransactionData()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -32,6 +44,10 @@ class ActivityViewController: UIViewController {
         if let customTabBarController = findCustomTabBarController() {
             customTabBarController.tabBarContainerView.isHidden = false
         }
+    }
+
+    private func loadTransactionData() {
+        transactions = SampleDataGenerator.createSampleTransactions()
     }
 
     private func setupMoreMenu() {
@@ -59,6 +75,29 @@ class ActivityViewController: UIViewController {
                 categoryButtons.append(subview)
             }
         }
+    }
+
+    private func setupTransactionDataSource() {
+        transactionDataSource = UICollectionViewDiffableDataSource<Section, Transaction>(collectionView: transactionCollectionView) {
+            collectionView, indexPath, transaction in
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: "TransactionCell",
+                for: indexPath
+            ) as! TransactionCollectionViewCell
+            cell.configure(with: transaction)
+            return cell
+        }
+    }
+
+    private func updateTransactionData() {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Transaction>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(transactions)
+        transactionDataSource.apply(snapshot)
+
+        let itemHeight: CGFloat = 100
+        let totalHeight = CGFloat(transactions.count) * itemHeight
+        transactionCollectionViewHeightConstraint.constant = totalHeight
     }
 
     private func findCustomTabBarController() -> CustomTabBarController? {
@@ -107,5 +146,16 @@ class ActivityViewController: UIViewController {
             self.indicatorLeadingConstraint.constant = newLeadingConstant
             self.view.layoutIfNeeded()
         }
+    }
+
+    @IBAction func seeAllButtonTapped(_ sender: UIButton) {
+        print("See all Button Tapped")
+    }
+}
+
+extension ActivityViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.frame.width
+        return CGSize(width: width, height: 100)
     }
 }
